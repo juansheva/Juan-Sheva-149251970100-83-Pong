@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PaddleController : MonoBehaviour
 {
+    public string arah;
     public int speed;
 
     public KeyCode upKey;
@@ -19,6 +20,7 @@ public class PaddleController : MonoBehaviour
     private void Update()
     {
         MoveObject(GetInput());
+        //Debug.Log("Kecepatan paddle " + arah + rig.velocity);
     }
 
     private Vector2 GetInput()

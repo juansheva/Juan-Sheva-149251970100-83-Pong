@@ -20,7 +20,7 @@ public class PaddleController : MonoBehaviour
     private void Update()
     {
         MoveObject(GetInput());
-        //Debug.Log("Kecepatan paddle " + arah + rig.velocity);
+        Debug.Log("Kecepatan paddle " + arah + rig.velocity);
     }
 
     private Vector2 GetInput()

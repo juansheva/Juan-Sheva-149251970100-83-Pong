@@ -20,6 +20,7 @@ public class GoalController : MonoBehaviour
             {
                 manager.AddRightScore(1);
             }
+            FindObjectOfType<PowerUpManager>().RemoveAllPowerUp();
         }
     }
 }

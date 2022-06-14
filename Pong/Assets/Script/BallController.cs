@@ -20,8 +20,8 @@ public class BallController : MonoBehaviour
     {
         transform.position = new Vector3(resetPosition.x, resetPosition.y, 2);
         rig.velocity = Vector2.zero;
-        float arahKananX = Random.Range(1f, 1.5f);
-        float arahkiriX = Random.Range(-1.5f, -1f);
+        float arahKananX = Random.Range(0.5f, 1f);
+        float arahkiriX = Random.Range(-1f, -0.5f);
         int arahPilih = Random.Range(0, 2);
         float arahX;
         if (arahPilih == 1)
@@ -34,5 +34,10 @@ public class BallController : MonoBehaviour
         }
         Vector2 arah = new Vector2(arahX, Random.Range(-1f, 1f));
         rig.velocity = arah * speed;
+    }
+
+    public void ActivatePUSpeedUp(float magnitude)
+    {
+        rig.velocity *= magnitude;
     }
 }

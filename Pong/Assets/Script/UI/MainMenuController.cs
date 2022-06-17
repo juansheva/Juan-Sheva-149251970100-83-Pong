@@ -10,4 +10,9 @@ public class MainMenuController : MonoBehaviour
         Debug.Log("Created by Juan Sheva - 149251970100-83");
         SceneManager.LoadScene("Game");
     }
+
+    public void OpenPanel(GameObject _panel)
+    {
+        Instantiate(_panel, transform);
+    }
 }

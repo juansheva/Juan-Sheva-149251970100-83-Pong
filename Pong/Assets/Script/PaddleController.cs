@@ -12,8 +12,13 @@ public class PaddleController : MonoBehaviour
 
     private Rigidbody2D rig;
 
+    public Vector3 normalTransform;
+    private int normalSpeed;
+
     private void Start()
     {
+        normalSpeed = speed;
+        normalTransform = transform.localScale;
         rig = GetComponent<Rigidbody2D>();
     }
 
@@ -40,5 +45,39 @@ public class PaddleController : MonoBehaviour
     private void MoveObject(Vector2 movement)
     {
         rig.velocity = movement;
+    }
+
+    public void BuffSpeed(int _buffMultiplier, float _duration)
+    {
+        StartCoroutine(PaddleBuffSpeed(_buffMultiplier, _duration));
+    }
+
+    public void BuffHeight(int _buffMultiplier, float _duration)
+    {
+        StartCoroutine(PaddleBuffHeight(_buffMultiplier, _duration));
+    }
+
+    private IEnumerator PaddleBuffHeight(int _buffMultiplier, float _duration)
+    {
+        transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y * _buffMultiplier, transform.localScale.z);
+        yield return new WaitForSeconds(_duration);
+        transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y / _buffMultiplier, transform.localScale.z);
+    }
+
+    private IEnumerator PaddleBuffSpeed(int _buffMultiplier, float _duration)
+    {
+        speed *= _buffMultiplier;
+
+        yield return new WaitForSeconds(_duration);
+
+        speed /= _buffMultiplier;
+    }
+
+    public void NormalizedBuff()
+    {
+        StopAllCoroutines();
+        speed = normalSpeed;
+        transform.localScale = normalTransform;
+        Debug.Log("Normal");
     }
 }

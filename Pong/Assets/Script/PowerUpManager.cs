@@ -19,8 +19,8 @@ public class PowerUpManager : MonoBehaviour
     private float timer;
     public float powerUpTime;
 
-    [SerializeField]
-    private float powerUpTimer;
+    //[SerializeField]
+    //private float powerUpTimer;
 
     private void Start()
     {

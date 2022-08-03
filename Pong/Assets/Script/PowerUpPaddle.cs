@@ -30,7 +30,7 @@ public class PowerUpPaddle : MonoBehaviour
         BallController ball = other.GetComponent<BallController>();
         if (ball != null)
         {
-            Interacted(ball, multiplier, duration); ;
+            Interacted(ball, multiplier, duration);
         }
     }
 

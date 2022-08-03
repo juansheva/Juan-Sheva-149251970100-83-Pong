@@ -15,6 +15,8 @@ public class PaddleController : MonoBehaviour
     public Vector3 normalTransform;
     private int normalSpeed;
 
+    public float edgeField;
+
     private void Start()
     {
         normalSpeed = speed;
@@ -24,7 +26,23 @@ public class PaddleController : MonoBehaviour
 
     private void Update()
     {
-        MoveObject(GetInput());
+        if (transform.position.y >= edgeField || transform.position.y <= -edgeField)
+        {
+            MoveObject(Vector2.zero);
+            if (transform.position.y > edgeField)
+            {
+                transform.position = new Vector2(transform.position.x, edgeField - 0.01f);
+            }
+            if (transform.position.y < -edgeField)
+            {
+                transform.position = new Vector2(transform.position.x, -edgeField + 0.01f);
+            }
+        }
+        else
+        {
+            MoveObject(GetInput());
+        }
+
         Debug.Log("Kecepatan paddle " + arah + rig.velocity);
     }
 
@@ -59,17 +77,17 @@ public class PaddleController : MonoBehaviour
 
     private IEnumerator PaddleBuffHeight(int _buffMultiplier, float _duration)
     {
+        edgeField /= 1.5f;
         transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y * _buffMultiplier, transform.localScale.z);
         yield return new WaitForSeconds(_duration);
         transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y / _buffMultiplier, transform.localScale.z);
+        edgeField *= 1.5f;
     }
 
     private IEnumerator PaddleBuffSpeed(int _buffMultiplier, float _duration)
     {
         speed *= _buffMultiplier;
-
         yield return new WaitForSeconds(_duration);
-
         speed /= _buffMultiplier;
     }
 

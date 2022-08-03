@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manager: {fileID: 7790441304822863182, guid: 78eff6830202db2438c4bb0ac0742167, type: 3}
   ball: {fileID: 1667500528709541918, guid: 62f6afe085b79864cb555051863a9f79, type: 3}
-  magnitude: 1
+  magnitude: 1.5
   powerUpTime: 7
 --- !u!61 &1071827227192588144
 BoxCollider2D:

@@ -5,6 +5,7 @@ using UnityEngine;
 public class BallController : MonoBehaviour
 {
     public PaddleController paddle;
+
     public Vector2 resetPosition;
 
     public int speed;

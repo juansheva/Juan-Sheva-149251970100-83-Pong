@@ -11,7 +11,10 @@ public class PowerUpPaddleHeight : PowerUpPaddle
 
     protected override void Interacted(BallController _ball, int _multiplier, float _duration)
     {
-        _ball.paddle.BuffHeight(_multiplier, _duration);
+        if (_ball.paddle != null)
+        {
+            _ball.paddle.BuffHeight(_multiplier, _duration);
+        }
         base.Interacted(_ball, _multiplier, _duration);
     }
 }
